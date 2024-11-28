@@ -67,7 +67,7 @@ function playeradder(id) {
     document.getElementById("playerSelect").innerHTML = '';
     players.forEach(player => {
         if(player.position !=="GK" && id.toUpperCase()==player.position){
-            document.getElementById("playerSelect").innerHTML +=`<button id="card"><div onClick= "" id="${player.name}" class="bg-[url('/assets/images/badge_total_rush.webp')] bg-cover bg-no-repeat w-40 h-52 justify-items-center pl-3 pr-3 pt-7 pb-2">
+            document.getElementById("playerSelect").innerHTML +=`<button id="card"><div onClick= "replace(this.id)" id="${player.name}" class="bg-[url('/assets/images/badge_total_rush.webp')] bg-cover bg-no-repeat w-40 h-52 justify-items-center pl-3 pr-3 pt-7 pb-2">
             <div class="flex ">
                 <div class="mr-[-10px] mt-5 text-xl font-bold text-white leading-3">
                     <p>${player.rating}</p>
@@ -110,7 +110,7 @@ function playeradder(id) {
             </div>
         </div></button>`
         }else if(player.position ==="GK" && id.toUpperCase()==player.position){
-            document.getElementById("playerSelect").innerHTML +=`<button id="card"><div onClick= "" class="bg-[url('/assets/images/badge_total_rush.webp')] bg-cover bg-no-repeat w-40 h-52  justify-items-center pl-3 pr-3 pt-7 pb-2"  id="${player.name}">
+            document.getElementById("playerSelect").innerHTML +=`<button id="card"><div onClick= "replace(this.id)" class="bg-[url('/assets/images/badge_total_rush.webp')] bg-cover bg-no-repeat w-40 h-52  justify-items-center pl-3 pr-3 pt-7 pb-2"  id="${player.name}">
             <div class="flex ">
                 <div class="mr-[-10px] mt-5 text-xl font-bold text-white leading-3">
                     <p>${player.rating}</p>
@@ -161,7 +161,12 @@ function add(idpl){
     document.getElementById("addpop").classList.toggle("flex")
     posid=idpl;
 }
-
+function replace(id) {
+    document.getElementById(id).classList.add("scale-50","-ml-7","-mt-9","hover:scale-75","hover:z-[100]")
+    let first_child= document.getElementById(posid).firstElementChild;
+    
+    first_child.replaceWith(document.getElementById(id));
+}
 function cancle(event) {
     let tar = event.target.id;
     
@@ -170,8 +175,3 @@ function cancle(event) {
         document.getElementById("addpop").classList.toggle("flex")
     }
 }
-// document.getElementById("").replaceChild(document.getElementById(""))
-// const newNode = document.getElementById("Joshua Kimmich");
-// const element = document.getElementById("st").children[0];
-
-// document.getElementById("st").firstChild.replaceWith(document.getElementById("Joshua Kimmich"));
