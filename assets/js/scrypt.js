@@ -162,10 +162,11 @@ function add(idpl){
     posid=idpl;
 }
 function replace(id) {
-    document.getElementById(id).classList.add("scale-50","-ml-7","-mt-9","hover:scale-75","hover:z-[100]")
+    document.getElementById(id).classList.add("scale-50","-ml-7","-mt-9","hover:scale-75","hover:z-[100]","transition-all", "duration-300")
     let first_child= document.getElementById(posid).firstElementChild;
     
     first_child.replaceWith(document.getElementById(id));
+    posid="0";
 }
 function cancle(event) {
     let tar = event.target.id;
