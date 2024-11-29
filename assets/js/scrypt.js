@@ -193,6 +193,7 @@ function newplayer() {
     const dri = Number(document.getElementById("dri").value)
     const def = Number(document.getElementById("def").value)
     const phy = Number(document.getElementById("phy").value)
+    const rat = parseInt((pac+sho+pas+dri+def+phy)/6)
     let nplayer={
         "name": name,
         "photo": photo,
@@ -201,7 +202,7 @@ function newplayer() {
         "flag": flag,
         "club": club,
         "logo": logo,
-        "rating": parseInt((pac+sho+pas+dri+def+phy)/6),
+        "rating": rat,
         "pace": pac,
         "shooting": sho,
         "passing": pas,
@@ -210,8 +211,53 @@ function newplayer() {
         "physical": phy
     }
     let newdata= JSON.parse(localStorage.data);
-    if (!newdata.players.includes(nplayer)) {
+    if (!newdata.players.some(player => JSON.stringify(player) === JSON.stringify(nplayer))) {
         newdata.players.push(nplayer)
         localStorage.setItem("data",JSON.stringify(newdata))
+        document.getElementById(document.getElementById("position").value).innerHTML = '';
+        document.getElementById(document.getElementById("position").value).innerHTML +=`<div onClick= "replace(this.id)" id="${name}" class="bg-[url('/assets/images/badge_total_rush.webp')] bg-cover bg-no-repeat w-40 h-52 justify-items-center pl-3 pr-3 pt-7 pb-2 scale-50 -ml-7 -mt-9 hover:scale-75 hover:z-[100] transition-all duration-300">
+                <div class="flex ">
+                    <div class="mr-[-10px] mt-5 text-xl font-bold text-white leading-3">
+                        <p>${rat}</p>
+                        <p class="text-lg">${pos}</p>
+                    </div>
+                    
+                    <img class="ml-[-9px] mt-1 mb-[-10px] z-10" src="${photo}" style="mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 8%);" width="100" alt="">
+                </div>
+                
+                <h1 class="font-bold text-white z-20 text-sm">${name}</h1>
+                <div class="text-white text-[8px] flex gap-1 font-black justify-items-center">
+                    <ul>
+                        <li>PAC</li>
+                        <li>${pac}</li>
+                    </ul>
+                    <ul>
+                        <li>SHO</li>
+                        <li>${sho}</li>
+                    </ul>
+                    <ul>
+                        <li>PAS</li>
+                        <li>${pas}</li>
+                    </ul>
+                    <ul>
+                        <li>DRI</li>
+                        <li>${dri}</li>
+                    </ul>
+                    <ul>
+                        <li>DEF</li>
+                        <li>${def}</li>
+                    </ul>
+                    <ul>
+                        <li>PHY</li>
+                        <li>${phy}</li>
+                    </ul>
+                </div>
+                <div class="flex gap-3 mt-1">
+                    <img src="${flag}" width="12" alt="">
+                    <img src="${logo}" width="12" alt="">
+                </div>
+            </div>`;
+    }else{
+        alert("player already exicte")
     }
 }
