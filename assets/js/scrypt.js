@@ -70,7 +70,7 @@ function playeradder(id) {
     document.getElementById("playerSelect").innerHTML = '';
     players.forEach(player => {
         if(player.position !=="GK" && id.toUpperCase()==player.position){
-            document.getElementById("playerSelect").innerHTML +=`<button id="card"><div onClick= "replace(this.id)" id="${player.name}" class="bg-[url('/assets/images/badge_total_rush.webp')] bg-cover bg-no-repeat w-40 h-52 justify-items-center pl-3 pr-3 pt-7 pb-2">
+            document.getElementById("playerSelect").innerHTML +=`<button id="card"><div onClick= "replace(this.id)" id="${player.name}" class="bg-[url('./assets/images/badge_total_rush.webp')] bg-cover bg-no-repeat w-40 h-52 justify-items-center pl-3 pr-3 pt-7 pb-2">
             <div class="flex ">
                 <div class="mr-[-10px] mt-5 text-xl font-bold text-white leading-3">
                     <p>${player.rating}</p>
@@ -113,7 +113,7 @@ function playeradder(id) {
             </div>
         </div></button>`
         }else if(player.position ==="GK" && id.toUpperCase()==player.position){
-            document.getElementById("playerSelect").innerHTML +=`<button id="card"><div onClick= "replace(this.id)" class="bg-[url('/assets/images/badge_total_rush.webp')] bg-cover bg-no-repeat w-40 h-52  justify-items-center pl-3 pr-3 pt-7 pb-2"  id="${player.name}">
+            document.getElementById("playerSelect").innerHTML +=`<button id="card"><div onClick= "replace(this.id)" class="bg-[url('./assets/images/badge_total_rush.webp')] bg-cover bg-no-repeat w-40 h-52  justify-items-center pl-3 pr-3 pt-7 pb-2"  id="${player.name}">
             <div class="flex ">
                 <div class="mr-[-10px] mt-5 text-xl font-bold text-white leading-3">
                     <p>${player.rating}</p>
@@ -215,7 +215,7 @@ function newplayer() {
         newdata.players.push(nplayer)
         localStorage.setItem("data",JSON.stringify(newdata))
         document.getElementById(document.getElementById("position").value).innerHTML = '';
-        document.getElementById(document.getElementById("position").value).innerHTML +=`<div onClick= "replace(this.id)" id="${name}" class="bg-[url('/assets/images/badge_total_rush.webp')] bg-cover bg-no-repeat w-40 h-52 justify-items-center pl-3 pr-3 pt-7 pb-2 scale-50 -ml-7 -mt-9 hover:scale-75 hover:z-[100] transition-all duration-300">
+        document.getElementById(document.getElementById("position").value).innerHTML +=`<div onClick= "replace(this.id)" id="${name}" class="bg-[url('./assets/images/badge_total_rush.webp')] bg-cover bg-no-repeat w-40 h-52 justify-items-center pl-3 pr-3 pt-7 pb-2 scale-50 -ml-7 -mt-9 hover:scale-75 hover:z-[100] transition-all duration-300">
                 <div class="flex ">
                     <div class="mr-[-10px] mt-5 text-xl font-bold text-white leading-3">
                         <p>${rat}</p>
