@@ -956,6 +956,10 @@ video {
   background-image: url('./assets/images/badge_total_rush.webp');
 }
 
+.bg-\[url\(\'assets\/images\/badge_total_rush\.webp\'\)\] {
+  background-image: url('assets/images/badge_total_rush.webp');
+}
+
 .from-transparent {
   --tw-gradient-from: transparent var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(0 0 0 / 0) var(--tw-gradient-to-position);
