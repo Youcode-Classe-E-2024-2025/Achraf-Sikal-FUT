@@ -182,7 +182,7 @@ function cancle(event) {
 function newplayer() {
     const name = document.getElementById("name").value
     const photo = document.getElementById("photo").value
-    const pos = document.getElementById("position").value
+    const pos = document.getElementById("position").value.toUpperCase()
     const national = document.getElementById("nationality").value
     const flag = document.getElementById("flag").value
     const logo = document.getElementById("logo").value
@@ -210,6 +210,8 @@ function newplayer() {
         "physical": phy
     }
     let newdata= JSON.parse(localStorage.data);
-    newdata.players.push(nplayer)
-    localStorage.setItem("data",JSON.stringify(newdata))
+    if (!newdata.players.includes(nplayer)) {
+        newdata.players.push(nplayer)
+        localStorage.setItem("data",JSON.stringify(newdata))
+    }
 }
