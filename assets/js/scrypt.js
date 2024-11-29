@@ -1,5 +1,8 @@
-fetch('./data.json').then((response) => response.json()).then((json) => localStorage.setItem("data",JSON.stringify(json)));
+fetch('./data.json').then((response) => response.json()).then((json) => {if (!localStorage.data) {
+    localStorage.setItem("data",JSON.stringify(json))
+}});
     
+
 
 function formtiongen(){
     let forma = document.getElementById("formation").value
@@ -175,4 +178,38 @@ function cancle(event) {
         document.getElementById("addpop").classList.toggle("hidden")
         document.getElementById("addpop").classList.toggle("flex")
     }
+}
+function newplayer() {
+    const name = document.getElementById("name").value
+    const photo = document.getElementById("photo").value
+    const pos = document.getElementById("position").value
+    const national = document.getElementById("nationality").value
+    const flag = document.getElementById("flag").value
+    const logo = document.getElementById("logo").value
+    const club = document.getElementById("club").value
+    const pac = Number(document.getElementById("pac").value)
+    const sho = Number(document.getElementById("sho").value)
+    const pas = Number(document.getElementById("pas").value)
+    const dri = Number(document.getElementById("dri").value)
+    const def = Number(document.getElementById("def").value)
+    const phy = Number(document.getElementById("phy").value)
+    let nplayer={
+        "name": name,
+        "photo": photo,
+        "position": pos,
+        "nationality": national,
+        "flag": flag,
+        "club": club,
+        "logo": logo,
+        "rating": parseInt((pac+sho+pas+dri+def+phy)/6),
+        "pace": pac,
+        "shooting": sho,
+        "passing": pas,
+        "dribbling": dri,
+        "defending": def,
+        "physical": phy
+    }
+    let newdata= JSON.parse(localStorage.data);
+    newdata.players.push(nplayer)
+    localStorage.setItem("data",JSON.stringify(newdata))
 }
