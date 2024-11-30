@@ -618,6 +618,10 @@ video {
   grid-column-start: 1;
 }
 
+.col-start-9 {
+  grid-column-start: 9;
+}
+
 .row-start-1 {
   grid-row-start: 1;
 }
@@ -796,6 +800,14 @@ video {
 
 .w-16 {
   width: 4rem;
+}
+
+.w-10\/12 {
+  width: 83.333333%;
+}
+
+.w-8\/12 {
+  width: 66.666667%;
 }
 
 .-translate-x-6 {
