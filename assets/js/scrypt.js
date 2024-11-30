@@ -63,14 +63,18 @@ function formtiongen(){
 }
 
 
-
-
+let posid ="";
+function add(idpl){
+    document.getElementById("addpop").classList.toggle("hidden")
+    document.getElementById("addpop").classList.toggle("flex")
+    posid=idpl;
+}
 let players = JSON.parse(localStorage.data).players;
 function playeradder(id) {
     document.getElementById("playerSelect").innerHTML = '';
     players.forEach(player => {
-        if(player.position !=="GK" && id.toUpperCase()==player.position){
-            document.getElementById("playerSelect").innerHTML +=`<button id="card"><div onClick= "replace(this.id)" id="${player.name}" class="bg-[url('/assets/images/badge_total_rush.webp')] bg-cover bg-no-repeat w-40 h-52 justify-items-center pl-3 pr-3 pt-7 pb-2">
+        if(player.position !=="GK" && id.toUpperCase()==player.position || player.position !=="GK" && posid.includes("sb")){
+            document.getElementById("playerSelect").innerHTML +=`<button id="card"><div onClick= "replace(this.id)" id=${players.indexOf(player)} class="bg-[url('/assets/images/badge_total_rush.webp')] bg-cover bg-no-repeat w-40 h-52 justify-items-center pl-3 pr-3 pt-7 pb-2">
             <div class="flex ">
                 <div class="mr-[-10px] mt-5 text-xl font-bold text-white leading-3">
                     <p>${player.rating}</p>
@@ -112,7 +116,7 @@ function playeradder(id) {
                 <img src="${player.logo}" width="12" alt="">
             </div>
         </div></button>`
-        }else if(player.position ==="GK" && id.toUpperCase()==player.position){
+        }else if(player.position ==="GK" && id.toUpperCase()==player.position || posid.includes("sb")){
             document.getElementById("playerSelect").innerHTML +=`<button id="card"><div onClick= "replace(this.id)" class="bg-[url('/assets/images/badge_total_rush.webp')] bg-cover bg-no-repeat w-40 h-52  justify-items-center pl-3 pr-3 pt-7 pb-2"  id="${player.name}">
             <div class="flex ">
                 <div class="mr-[-10px] mt-5 text-xl font-bold text-white leading-3">
@@ -158,12 +162,8 @@ function playeradder(id) {
         }
     });
 }
-let posid ="";
-function add(idpl){
-    document.getElementById("addpop").classList.toggle("hidden")
-    document.getElementById("addpop").classList.toggle("flex")
-    posid=idpl;
-}
+
+
 function replace(id) {
     document.getElementById(id).classList.add("scale-50","-ml-7","-mt-9","hover:scale-75","hover:z-[100]","transition-all", "duration-300")
     let first_child= document.getElementById(posid).firstElementChild;
