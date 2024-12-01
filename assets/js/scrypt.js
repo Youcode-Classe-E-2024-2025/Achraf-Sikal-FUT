@@ -74,7 +74,7 @@ function playeradder(id) {
     document.getElementById("playerSelect").innerHTML = '';
     players.forEach(player => {
         if(player.position !=="GK" && id.toUpperCase()==player.position || player.position !=="GK" && posid.includes("sb")){
-            document.getElementById("playerSelect").innerHTML +=`<button id="card"><div onClick= "replace(this.id)" id=${players.indexOf(player)} class="bg-[url('/assets/images/badge_total_rush.webp')] bg-cover bg-no-repeat w-40 h-52 justify-items-center pl-3 pr-3 pt-7 pb-2">
+            document.getElementById("playerSelect").innerHTML +=`<button id="card"><div onClick= "replace(this.id)" id=${players.indexOf(player)} class="bg-[url('/assets/images/rush.webp')] bg-cover bg-no-repeat w-40 h-52 justify-items-center pl-3 pr-3 pt-7 pb-2">
             <div class="flex ">
                 <div class="mr-[-10px] mt-5 text-xl font-bold text-white leading-3">
                     <p>${player.rating}</p>
