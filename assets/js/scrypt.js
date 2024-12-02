@@ -117,7 +117,7 @@ function playeradder(id) {
             </div>
         </div></button>`
         }else if(player.position ==="GK" && id.toUpperCase()==player.position || posid.includes("sb")){
-            document.getElementById("playerSelect").innerHTML +=`<button id="card"><div onClick= "replace(this.id)" class="bg-[url('/assets/images/badge_total_rush.webp')] bg-cover bg-no-repeat w-40 h-52  justify-items-center pl-3 pr-3 pt-7 pb-2"  id="${player.name}">
+            document.getElementById("playerSelect").innerHTML +=`<button id="card"><div onClick= "replace(this.id)" class="bg-[url('/assets/images/rush.webp')] bg-cover bg-no-repeat w-40 h-52  justify-items-center pl-3 pr-3 pt-7 pb-2"  id="${player.name}">
             <div class="flex ">
                 <div class="mr-[-10px] mt-5 text-xl font-bold text-white leading-3">
                     <p>${player.rating}</p>
@@ -170,6 +170,19 @@ function replace(id) {
     
     first_child.replaceWith(document.getElementById(id));
     posid="0";
+    Array.from(document.getElementById("teamleyout").children).forEach(element => {
+        if(element.childElementCount==0){
+            element.innerHTML=`<div class="h-full grid">
+                                <img class="absolute z-10 w-9/12 justify-self-center" src="assets/images/cardplace.webp" alt="">
+                                <div class="">
+                                    <div class="relative z-20 text-[#7600BC] hover:text-white cursor-pointer fill-none card flex items-center justify-center align-middle row-start-4 mt-8 stroke-[#7600BC] hover:stroke-white hover:fill-[#7600BC]">
+                                        <span class="absolute"><svg class="w-7 z-10" viewBox="0 0 36 42" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke-width="1.5"></path></svg></span>
+                                        <div class="font-large z-30">+</div>
+                                    </div>
+                                </div>
+                            </div>`
+        }
+    });
 }
 function cancle(event) {
     let tar = event.target.id;
@@ -215,7 +228,7 @@ function newplayer() {
         newdata.players.push(nplayer)
         localStorage.setItem("data",JSON.stringify(newdata))
         document.getElementById(document.getElementById("position").value).innerHTML = '';
-        document.getElementById(document.getElementById("position").value).innerHTML +=`<div onClick= "replace(this.id)" id="${name}" class="bg-[url('/assets/images/badge_total_rush.webp')] bg-cover bg-no-repeat w-40 h-52 justify-items-center pl-3 pr-3 pt-7 pb-2 scale-50 -ml-7 -mt-9 hover:scale-75 hover:z-[100] transition-all duration-300">
+        document.getElementById(document.getElementById("position").value).innerHTML +=`<div onClick= "replace(this.id)" id="${name}" class="bg-[url('/assets/images/rush.webp')] bg-cover bg-no-repeat w-40 h-52 justify-items-center pl-3 pr-3 pt-7 pb-2 scale-50 -ml-7 -mt-9 hover:scale-75 hover:z-[100] transition-all duration-300">
                 <div class="flex ">
                     <div class="mr-[-10px] mt-5 text-xl font-bold text-white leading-3">
                         <p>${rat}</p>
