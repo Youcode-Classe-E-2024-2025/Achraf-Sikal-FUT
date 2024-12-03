@@ -66,7 +66,9 @@ function formtiongen(){
 let posid ="";
 function add(idpl){
     document.getElementById("addpop").classList.toggle("hidden")
+    document.getElementById("noclick").classList.toggle("hidden")
     document.getElementById("addpop").classList.toggle("flex")
+    document.getElementById("mainpage").classList.toggle("blur-md")
     posid=idpl;
 }
 let players = JSON.parse(localStorage.data).players;
@@ -192,6 +194,8 @@ function cancle(event) {
     if(tar!=="playerSelect"){
         document.getElementById("addpop").classList.toggle("hidden")
         document.getElementById("addpop").classList.toggle("flex")
+        document.getElementById("noclick").classList.toggle("hidden")
+        document.getElementById("mainpage").classList.toggle("blur-md")
     }
 }
 function newplayer() {

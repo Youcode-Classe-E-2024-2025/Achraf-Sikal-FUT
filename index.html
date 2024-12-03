@@ -20,6 +20,7 @@
             
         }
     </style>
+    <div id="mainpage" class="">
     <nav class="flex justify-between text-3xl p-3 shadow-md shadow-purple-200 mb-9">
         <div>
             <a href="index.html"><span class="text-purple-700 font-black font-sans">F</span>oot<span class="text-purple-700 font-black font-sans">U</span>ltimaite<span class="text-purple-700 font-black font-sans">T</span>eam</a>
@@ -203,14 +204,8 @@
                     <button type="submit" id="formdata" onclick="newplayer()" class="bg-white rounded-sm">Ajouter</button>
                 </div>
             </div>
-
-
         </section>
-        <div id="addpop" onclick="cancle(event)" class="w-full top-20 absolute justify-center hidden">
-            <section id="playerSelect" class="absolute w-11/12 bg-white z-50 grid grid-cols-6 content-center gap-6 justify-center overflow-y-scroll">
-                <button>cancle</button>
-            </section>
-        </div>
+            
         <section id="" class="relative grid grid-cols-9 w-8/12">
             <button id="sb1" onclick="add(this.id), playeradder(this.id)" class="col-start-1 h-28 transition-all duration-100 hover:scale-125"><!-- CARD PLACE HOLDER AND INNER BUTTON -->
                 <div class="h-full grid card text-[#7600BC] hover:text-white cursor-pointer fill-none stroke-[#7600BC] hover:stroke-white hover:fill-[#7600BC]">
@@ -334,6 +329,12 @@
             <a href="404.html">More Details</a>
         </div>
     </footer>
+    <div id="noclick" class="w-screen h-full fixed top-0 z-20 hidden"></div>
+    </div>
+    <div id="addpop" onclick="cancle(event)" class="w-full top-30 justify-center fixed top-0 mt-10 hidden">
+        <section id="playerSelect" class="h-96 w-11/12 bg-white z-50 grid grid-cols-6 gap-6 justify-center overflow-y-scroll content-start">
+        </section>
+    </div>
     <script src="assets/js/script.js"></script>
 </body>
 </html>

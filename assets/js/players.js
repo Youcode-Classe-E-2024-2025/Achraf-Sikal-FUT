@@ -49,8 +49,8 @@ players.forEach(player => {
         </div>
         </div>
         <div class="flex justify-between p-3">
-            <p class="rounded-md p-1 text-white font-semibold bg-red-600" onClick= "remove(this.parentElement.parentElement.id)">delete</p>
-            <p class="rounded-md p-1 text-white font-semibold bg-purple-600" onClick= "modbtn(this.parentElement.parentElement.id)">modify</p>
+            <p class="rounded-md p-1 text-red-600 border-red-600 border-2 font-semibold transition-colors hover:bg-red-600 hover:text-white" onClick= "remove(this.parentElement.parentElement.id)">delete</p>
+            <p class="rounded-md p-1 text-purple-600 font-semibold border-purple-600 border-2 transition-colors hover:bg-purple-600 hover:text-white" onClick= "modbtn(this.parentElement.parentElement.id)">modify</p>
         </div>
         
         </button>`
@@ -99,8 +99,8 @@ players.forEach(player => {
         </div>
     </div>
     <div class="flex justify-between p-3">
-        <p class="rounded-md p-1 text-white font-semibold bg-red-600" onClick= "remove(this.parentElement.parentElement.id)">delete</p>
-        <p class="rounded-md p-1 text-white font-semibold bg-purple-600" onClick= "modbtn(this.parentElement.parentElement.id)">modify</p>
+        <p class="rounded-md p-1 text-red-600 border-red-600 border-2 font-semibold transition-colors hover:bg-red-600 hover:text-white" onClick= "remove(this.parentElement.parentElement.id)">delete</p>
+        <p class="rounded-md p-1 text-purple-600 font-semibold border-purple-600 border-2 transition-colors hover:bg-purple-600 hover:text-white" onClick= "modbtn(this.parentElement.parentElement.id)">modify</p>
     </div>
     </button>`
     }});
