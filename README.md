@@ -3,7 +3,7 @@
 Welcome to **Achraf Sikal FUT**, a FIFA Ultimate Team-themed project designed to showcase web development skills. This project combines creative design with clean coding practices.
 
 ## 🌐 Live Demo
-Access the live version here: [Achraf-Sikal-FUT](https://fut-ten.vercel.app/)
+Access the live version here: [Achraf-Sikal-FUT](https://achraf-sikal-fut.vercel.app/)
 
 ---
 
