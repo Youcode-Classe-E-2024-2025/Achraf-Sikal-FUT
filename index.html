@@ -22,19 +22,21 @@
         }
     </style>
     <div id="mainpage" class="">
-    <nav class="hidden sm:flex justify-between text-3xl p-3 shadow-md shadow-purple-200 mb-9">
+    <nav class="text-xs flex flex-wrap sm:flex-nowrap justify-between sm:text-3xl p-3 shadow-md shadow-purple-200 mb-9">
         <div>
             <a href="index.html"><span class="text-purple-700 font-black font-sans">F</span>oot<span class="text-purple-700 font-black font-sans">U</span>ltimaite<span class="text-purple-700 font-black font-sans">T</span>eam</a>
         </div>
-        <div class="flex gap-16">
+        <div class="flex gap-5 sm:gap-16">
             <a href="players.html">Players</a>
             <a href="index.html">Squad Builder</a>
-            <a href="404.html">Squads</a>
         </div>
         <div>
-            <button onclick="rest()" class="bg-purple-700 text-lg p-1 pr-3 pl-3 rounded-md text-white transition-colors focus:bg-purple-300">Rest localstorage</button>
+            <button onclick="rest()" class="bg-purple-700 mt-2 sm:mt-0 text-xs sm:text-lg p-1 pr-3 pl-3 rounded-md text-white transition-colors focus:bg-purple-300">Rest localstorage</button>
         </div>
     </nav>
+    <div class="sm:hidden flex justify-center items-center mb-4">
+        <button onclick="addpoprespo()" class="bg-purple-700 text-lg font-black p-1 pr-2 pl-3 rounded-md text-white transition-colors focus:bg-purple-300">+new player</button>
+    </div>
         <section class="grid sm:flex gap- sm:gap-20 min-h-screen">
             <div class="w-screen sm:w-3/5 relative">
                 <div id="teamleyout" class="grid grid-cols-9 grid-rows-5 bg">
@@ -173,7 +175,7 @@
                     <option value="352">3-5-2</option>
                     <option value="532">5-3-2</option>
                 </select>
-                <div id="addform" class="grid justify-self-center sm:justify-self-auto gap-3 mt-10 bg-purple-950 rounded-md p-5 w-56">
+                <div id="addform" class="absolute hidden grid top-0 z-50 sm:static sm:grid justify-self-center sm:justify-self-auto gap-3 mt-10 bg-purple-950 rounded-md p-5 w-56">
                     <input id="name" type="text" placeholder="player name" required>
                     <input id="photo" type="url" placeholder="player photo url" required>
                     <!-- <input id="position" type="text" placeholder="position"> -->
@@ -202,7 +204,8 @@
                         <input id="def" type="number" placeholder="DEF">
                         <input id="phy" type="number" placeholder="PHY">
                     </div>
-                    <button type="submit" id="formdata" onclick="newplayer()" class="bg-white rounded-sm">Ajouter</button>
+                    <button type="submit" id="formdata" onclick="newplayer()" class="bg-white rounded-sm hidden sm:block">Ajouter</button>
+                    <button type="submit" id="formdatares" onclick="newplayer(),addpoprespo()" class="bg-white rounded-sm block sm:hidden">Ajouter</button>
                 </div>
             </div>
         </section>
