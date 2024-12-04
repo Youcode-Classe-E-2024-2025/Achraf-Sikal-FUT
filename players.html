@@ -10,7 +10,7 @@
 </head>
 <body class="">
     <main class="">
-    <nav class="flex justify-between text-3xl p-3 shadow-md shadow-purple-200 mb-9">
+    <nav class="hidden sm:flex justify-between text-3xl p-3 shadow-md shadow-purple-200 mb-9">
         <div>
             <a href="index.html"><span class="text-purple-700 font-black font-sans">F</span>oot<span class="text-purple-700 font-black font-sans">U</span>ltimaite<span class="text-purple-700 font-black font-sans">T</span>eam</a>
         </div>
@@ -25,11 +25,11 @@
     </nav>
     
     <!-- main content -->
-    <section id="playerlist" class="bg-white z-50 grid grid-cols-6 content-center gap-16 justify-center"></section>
+    <section id="playerlist" class="bg-white z-50 grid grid-cols-2 sm:grid-cols-6 content-center gap-16 justify-center"></section>
     
     
     <!-- footer -->
-    <footer  class="flex justify-between p-28 pt-10 pb-10">
+    <footer  class="hidden sm:flex justify-between p-28 pt-10 pb-10">
         <div class="grid">
             <p class="font-black">LATEST SQUADS</p>
             <a href="404.html">LC Pro</a>
@@ -54,7 +54,8 @@
     </main>
     <!-- modify form -->
     
-    <div class="justify-end items-end flex">
+    <div class="justify-center items-center flex">
+        <div id="modformbg" class="fixed w-screen h-screen top-0 left-0 z-30 hidden"></div>
         <div id="modform" class="grid hidden gap-3 mt-10 bg-purple-950 rounded-md p-5 w-56 z-30 absolute top-0">
             <input id="name" type="text" placeholder="player name">
             <input id="photo" type="text" placeholder="player photo url">
