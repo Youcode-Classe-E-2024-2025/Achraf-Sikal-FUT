@@ -114,13 +114,14 @@ players.forEach(player => {
                 
             }
         });
-        
     }
+let playerindex;
     function modbtn(index){
         players.forEach(player => {
             document.getElementById("modform").classList.remove("hidden");
             document.querySelector("main").classList.add("blur-sm");
             if (player.id==index && player.position=="GK") {
+                playerindex = players.indexOf(player)
                 document.getElementById("name").value=player.name
                 document.getElementById("photo").value=player.photo
                 document.getElementById("club").value=player.club
@@ -135,6 +136,7 @@ players.forEach(player => {
                 document.getElementById("flag").value=player.flag
                 document.getElementById("position").value=player.position
             }else if (player.id==index && player.position!="GK") {
+                playerindex = players.indexOf(player)
                 document.getElementById("name").value=player.name
                 document.getElementById("photo").value=player.photo
                 document.getElementById("club").value=player.club
@@ -149,10 +151,9 @@ players.forEach(player => {
                 document.getElementById("flag").value=player.flag
                 document.getElementById("position").value=player.position
             }
-            players.splice(players.indexOf(player), 1)
-            localStorage.setItem("data",JSON.stringify({"players":players}))
+            // players.splice(players.indexOf(player), 1)
+            // localStorage.setItem("data",JSON.stringify({"players":players}))
         });
-        
     }
     function modify() {
         const name = document.getElementById("name").value
@@ -169,48 +170,39 @@ players.forEach(player => {
         const def = Number(document.getElementById("def").value)
         const phy = Number(document.getElementById("phy").value)
         const rat = parseInt((pac+sho+pas+dri+def+phy)/6)
-        let moddata= JSON.parse(localStorage.data);
-        let id = moddata.players.length
-        let mdplayer;
+        let players= JSON.parse(localStorage.data);        
         if (pos!="GK"){
-            mdplayer={
-                "id":id+1,
-                "name": name,
-                "photo": photo,
-                "position": pos,
-                "nationality": national,
-                "flag": flag,
-                "club": club,
-                "logo": logo,
-                "rating": rat,
-                "pace": pac,
-                "shooting": sho,
-                "passing": pas,
-                "dribbling": dri,
-                "defending": def,
-                "physical": phy
-            }
+                players.players[playerindex].name= name
+                players.players[playerindex].photo = photo
+                players.players[playerindex].position = pos
+                players.players[playerindex].nationality =  national
+                players.players[playerindex].flag = flag
+                players.players[playerindex].club = club
+                players.players[playerindex].logo = logo
+                players.players[playerindex].rating = rat
+                players.players[playerindex].pace = pac
+                players.players[playerindex].shooting = sho
+                players.players[playerindex].passing = pas
+                players.players[playerindex].dribbling = dri
+                players.players[playerindex].defending = def
+                players.players[playerindex].physical = phy
         }else{
-            mdplayer={
-                "id":id+1,
-                "name": name,
-                "photo": photo,
-                "position": pos,
-                "nationality": national,
-                "flag": flag,
-                "club": club,
-                "logo": logo,
-                "rating": rat,
-                "diving": phy,
-                "handling": def,
-                "kicking": pac,
-                "reflexes": pas,
-                "speed": dri,
-                "positioning": sho
-            }
+                players.players[playerindex].name = name
+                players.players[playerindex].photo = photo
+                players.players[playerindex].position = pos
+                players.players[playerindex].nationality = national
+                players.players[playerindex].flag = flag
+                players.players[playerindex].club = club
+                players.players[playerindex].logo = logo
+                players.players[playerindex].rating = rat
+                players.players[playerindex].diving = phy
+                players.players[playerindex].handling = def
+                players.players[playerindex].kicking = pac
+                players.players[playerindex].reflexes = pas
+                players.players[playerindex].speed = dri
+                players.players[playerindex].positioning = sho
         }
-        moddata.players.push(mdplayer)
-        localStorage.setItem("data",JSON.stringify(moddata))
+        localStorage.setItem("data",JSON.stringify(players))
         document.getElementById("modform").classList.add("hidden");
         document.querySelector("main").classList.remove("blur-sm");
     };

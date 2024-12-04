@@ -213,70 +213,178 @@ function newplayer() {
     const def = Number(document.getElementById("def").value)
     const phy = Number(document.getElementById("phy").value)
     const rat = parseInt((pac+sho+pas+dri+def+phy)/6)
-    let nplayer={
-        "name": name,
-        "photo": photo,
-        "position": pos,
-        "nationality": national,
-        "flag": flag,
-        "club": club,
-        "logo": logo,
-        "rating": rat,
-        "pace": pac,
-        "shooting": sho,
-        "passing": pas,
-        "dribbling": dri,
-        "defending": def,
-        "physical": phy
-    }
-    let newdata= JSON.parse(localStorage.data);
-    if (!newdata.players.some(player => JSON.stringify(player) === JSON.stringify(nplayer))) {
-        newdata.players.push(nplayer)
-        localStorage.setItem("data",JSON.stringify(newdata))
-        document.getElementById(document.getElementById("position").value).innerHTML = '';
-        document.getElementById(document.getElementById("position").value).innerHTML +=`<div onClick= "replace(this.id)" id="${name}" class="-translate-x-3 -translate-y-8 bg-[url('/assets/images/rush.webp')] bg-cover bg-no-repeat w-40 h-52 justify-items-center pl-3 pr-3 pt-7 pb-2 scale-50 -ml-7 -mt-9 hover:scale-75 hover:z-[100] transition-all duration-300">
-                <div class="flex ">
-                    <div class="mr-[-10px] mt-5 text-xl font-bold text-white leading-3">
-                        <p>${rat}</p>
-                        <p class="text-lg">${pos}</p>
-                    </div>
-                    
-                    <img class="ml-[-9px] mt-1 mb-[-10px] z-10" src="${photo}" style="mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 8%);" width="100" alt="">
-                </div>
-                
-                <h1 class="font-bold text-white z-20 text-sm">${name}</h1>
-                <div class="text-white text-[8px] flex gap-1 font-black justify-items-center">
-                    <ul>
-                        <li>PAC</li>
-                        <li>${pac}</li>
-                    </ul>
-                    <ul>
-                        <li>SHO</li>
-                        <li>${sho}</li>
-                    </ul>
-                    <ul>
-                        <li>PAS</li>
-                        <li>${pas}</li>
-                    </ul>
-                    <ul>
-                        <li>DRI</li>
-                        <li>${dri}</li>
-                    </ul>
-                    <ul>
-                        <li>DEF</li>
-                        <li>${def}</li>
-                    </ul>
-                    <ul>
-                        <li>PHY</li>
-                        <li>${phy}</li>
-                    </ul>
-                </div>
-                <div class="flex gap-3 mt-1">
-                    <img src="${flag}" width="12" alt="">
-                    <img src="${logo}" width="12" alt="">
-                </div>
-            </div>`;
+    const patname = /^[a-zA-Z][a-zA-Z\s-']*$/
+    const patnat = /^[a-zA-Z\s][a-zA-Z\s]*$/
+    const patstat = /^[0-9]{2}$/
+    const paturl = /\bhttps?:\/\/[^\s/$.?#].[^\s]*\b/
+    let nameVer = patname.test(name);
+    let natVer = patnat.test(national);
+    let statVer = patstat.test(pac)&&patstat.test(sho)&&patstat.test(pas)&&patstat.test(dri)&&patstat.test(def)&&patstat.test(phy);
+    let clubVer = patname.test(club);
+    let urlVer = paturl.test(logo)&&paturl.test(flag)&&paturl.test(photo);
+    if (nameVer) {
+        if (urlVer) {
+            if (clubVer) {
+                if (natVer) {
+                    if (statVer) {
+                        ad()
+                    }else{
+                        alert("states cannot be charchers or special character provide only two digit number")
+                        return
+                    }
+                }else{
+                    alert("nationality cannot be empty or contain numbers or any special charchers")
+                    return
+                }
+            }else{
+                alert("club name cannot be empty or contain numbers or certen special charchers")
+                return
+            }
+        }else{
+            alert("prevoid valid url")
+            return
+        }
     }else{
-        alert("player already exicte")
+        alert("name cannot be empty or contain numbers or certen special charchers")
+        return
     }
+    function ad() {
+        let newdata= JSON.parse(localStorage.data);
+        let id = newdata.players.length
+        let nplayer;
+        if (pos!="GK"){
+            nplayer={
+                "id":id+1,
+                "name": name,
+                "photo": photo,
+                "position": pos,
+                "nationality": national,
+                "flag": flag,
+                "club": club,
+                "logo": logo,
+                "rating": rat,
+                "pace": pac,
+                "shooting": sho,
+                "passing": pas,
+                "dribbling": dri,
+                "defending": def,
+                "physical": phy
+            }
+        }else{
+            nplayer={
+                "id":id+1,
+                "name": name,
+                "photo": photo,
+                "position": pos,
+                "nationality": national,
+                "flag": flag,
+                "club": club,
+                "logo": logo,
+                "rating": rat,
+                "diving": phy,
+                "handling": def,
+                "kicking": pac,
+                "reflexes": pas,
+                "speed": dri,
+                "positioning": sho
+            }
+        }
+        if (!newdata.players.some(player => JSON.stringify(Object.fromEntries((Object.entries(player).slice(1)).slice(4)))===JSON.stringify(Object.fromEntries((Object.entries(nplayer).slice(1)).slice(4))))) {//remove id and position value from the comparison condition stringify to be abele to compare objects         
+            newdata.players.push(nplayer)
+            localStorage.setItem("data",JSON.stringify(newdata))
+            document.getElementById(document.getElementById("position").value).innerHTML = '';
+            if(document.getElementById("position").value!="GK"){
+                document.getElementById(document.getElementById("position").value).innerHTML +=`<div onClick= "replace(this.id)" id="${name}" class="-translate-x-3 -translate-y-8 bg-[url('/assets/images/rush.webp')] bg-cover bg-no-repeat w-40 h-52 justify-items-center pl-3 pr-3 pt-7 pb-2 scale-50 -ml-7 -mt-9 hover:scale-75 hover:z-[100] transition-all duration-300">
+                        <div class="flex ">
+                            <div class="mr-[-10px] mt-5 text-xl font-bold text-white leading-3">
+                                <p>${rat}</p>
+                                <p class="text-lg">${pos}</p>
+                            </div>
+                            
+                            <img class="ml-[-9px] mt-1 mb-[-10px] z-10" src="${photo}" style="mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 8%);" width="100" alt="">
+                        </div>
+                        
+                        <h1 class="font-bold text-white z-20 text-sm">${name}</h1>
+                        <div class="text-white text-[8px] flex gap-1 font-black justify-items-center">
+                            <ul>
+                                <li>KIC</li>
+                                <li>${pac}</li>
+                            </ul>
+                            <ul>
+                                <li>POS</li>
+                                <li>${sho}</li>
+                            </ul>
+                            <ul>
+                                <li>REF</li>
+                                <li>${pas}</li>
+                            </ul>
+                            <ul>
+                                <li>SPD</li>
+                                <li>${dri}</li>
+                            </ul>
+                            <ul>
+                                <li>HAN</li>
+                                <li>${def}</li>
+                            </ul>
+                            <ul>
+                                <li>DIV</li>
+                                <li>${phy}</li>
+                            </ul>
+                        </div>
+                        <div class="flex gap-3 mt-1">
+                            <img src="${flag}" width="12" alt="">
+                            <img src="${logo}" width="12" alt="">
+                        </div>
+                    </div>`}
+            else if(document.getElementById("position").value=="GK"){
+                document.getElementById(document.getElementById("position").value).innerHTML +=`<div onClick= "replace(this.id)" id="${name}" class="-translate-x-3 -translate-y-8 bg-[url('/assets/images/rush.webp')] bg-cover bg-no-repeat w-40 h-52 justify-items-center pl-3 pr-3 pt-7 pb-2 scale-50 -ml-7 -mt-9 hover:scale-75 hover:z-[100] transition-all duration-300">
+                                <div class="flex ">
+                                    <div class="mr-[-10px] mt-5 text-xl font-bold text-white leading-3">
+                                        <p>${rat}</p>
+                                        <p class="text-lg">${pos}</p>
+                                    </div>
+                                    
+                                    <img class="ml-[-9px] mt-1 mb-[-10px] z-10" src="${photo}" style="mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 8%);" width="100" alt="">
+                                </div>
+                                
+                                <h1 class="font-bold text-white z-20 text-sm">${name}</h1>
+                                <div class="text-white text-[8px] flex gap-1 font-black justify-items-center">
+                                    <ul>
+                                        <li>PAC</li>
+                                        <li>${pac}</li>
+                                    </ul>
+                                    <ul>
+                                        <li>SHO</li>
+                                        <li>${sho}</li>
+                                    </ul>
+                                    <ul>
+                                        <li>PAS</li>
+                                        <li>${pas}</li>
+                                    </ul>
+                                    <ul>
+                                        <li>DRI</li>
+                                        <li>${dri}</li>
+                                    </ul>
+                                    <ul>
+                                        <li>DEF</li>
+                                        <li>${def}</li>
+                                    </ul>
+                                    <ul>
+                                        <li>PHY</li>
+                                        <li>${phy}</li>
+                                    </ul>
+                                </div>
+                                <div class="flex gap-3 mt-1">
+                                    <img src="${flag}" width="12" alt="">
+                                    <img src="${logo}" width="12" alt="">
+                                </div>
+                    </div>`}
+        }else{
+            alert("player already exicte")
+        }
+    }
+    
+}
+function rest() {
+    fetch('./data.json').then((response) => response.json()).then((json) => {localStorage.setItem("data",JSON.stringify(json))});
 }

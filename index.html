@@ -28,11 +28,11 @@
         </div>
         <div class="flex gap-16">
             <a href="players.html">Players</a>
-            <a href="404.html">Squad Builder</a>
+            <a href="index.html">Squad Builder</a>
             <a href="404.html">Squads</a>
         </div>
         <div>
-            <button class="bg-purple-700 text-lg p-1 pr-3 pl-3 rounded-md text-white ">sign in</button>
+            <button onclick="rest()" class="bg-purple-700 text-lg p-1 pr-3 pl-3 rounded-md text-white transition-colors focus:bg-purple-300">Rest localstorage</button>
         </div>
     </nav>
         <section class="flex gap-20 min-h-screen">
@@ -174,8 +174,8 @@
                     <option value="532">5-3-2</option>
                 </select>
                 <div id="addform" class="grid gap-3 mt-10 bg-purple-950 rounded-md p-5 w-56">
-                    <input id="name" type="text" placeholder="player name">
-                    <input id="photo" type="text" placeholder="player photo url">
+                    <input id="name" type="text" placeholder="player name" required>
+                    <input id="photo" type="url" placeholder="player photo url" required>
                     <!-- <input id="position" type="text" placeholder="position"> -->
                     <select name="" id="position">
                         <option value="st">ST</option>
@@ -191,9 +191,9 @@
                         <option value="gk">GK</option>
                     </select>
                     <input id="nationality" type="text" placeholder="nationality">
-                    <input id="flag" type="text" placeholder="flag url">
+                    <input id="flag" type="url" placeholder="flag url">
                     <input id="club" type="text" placeholder="club">
-                    <input id="logo" type="text" placeholder="club logo url">
+                    <input id="logo" type="url" placeholder="club logo url">
                     <div class="grid grid-cols-3 gap-2">
                         <input id="pac" type="number" placeholder="PAC" pattern="([1-9]{1}[0-9])" required>
                         <input id="sho" type="number" placeholder="SHO">
