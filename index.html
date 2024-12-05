@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="assets/css/output.css">
     <link rel="icon" type="image/x-icon" href="assets/images/icon.svg">
 </head>
-<body class="">
+<body class="dark:bg-[#202020] dark:text-white">
     <style>
         .card{
             svg{
@@ -22,7 +22,7 @@
         }
     </style>
     <div id="mainpage" class="">
-    <nav class="text-xs flex flex-wrap sm:flex-nowrap justify-between sm:text-3xl p-3 shadow-md shadow-purple-200 mb-9">
+    <nav class="text-xs flex flex-wrap sm:flex-nowrap justify-between sm:text-3xl p-3 shadow-md shadow-purple-200 dark:shadow-purple-900 mb-9">
         <div>
             <a href="index.html"><span class="text-purple-700 font-black font-sans">F</span>oot<span class="text-purple-700 font-black font-sans">U</span>ltimaite<span class="text-purple-700 font-black font-sans">T</span>eam</a>
         </div>
@@ -30,7 +30,9 @@
             <a href="players.html">Players</a>
             <a href="index.html">Squad Builder</a>
         </div>
-        <div>
+        <div >
+            <button class="inline dark:hidden" onclick="theme()">dark</button>
+            <button class="hidden dark:inline" onclick="theme()">light</button>
             <button onclick="rest()" class="bg-purple-700 mt-2 sm:mt-0 text-xs sm:text-lg p-1 pr-3 pl-3 rounded-md text-white transition-colors focus:bg-purple-300">Rest localstorage</button>
         </div>
     </nav>
@@ -168,8 +170,8 @@
                 </div>
             </div>
             <div>
-                <input type="search" class="hidden sm:block" placeholder="team name">
-                <select class="hidden sm:block" onchange="formtiongen()" name="formations" id="formation">
+                <input type="search" class="hidden sm:block dark:bg-[#333333]" placeholder="team name">
+                <select class="hidden sm:block dark:bg-[#333333]" onchange="formtiongen()" name="formations" id="formation">
                     <option value="433">4-3-3</option>
                     <option value="442">4-4-2</option>
                     <option value="352">3-5-2</option>
@@ -336,7 +338,7 @@
     <div id="noclick" class="w-screen h-full fixed top-0 z-20 hidden"></div>
     </div>
     <div id="addpop" onclick="cancle(event)" class="w-full top-30 justify-center fixed top-0 mt-10 hidden">
-        <section id="playerSelect" class="h-96 w-11/12 bg-white z-50 grid grid-cols-6 gap-6 justify-center overflow-y-scroll content-start">
+        <section id="playerSelect" class="h-96 w-11/12 bg-white z-50 grid grid-cols-6 gap-6 justify-center overflow-y-scroll content-start dark:bg-[#202020] dark:text-white">
         </section>
     </div>
     <script src="assets/js/script.js"></script>

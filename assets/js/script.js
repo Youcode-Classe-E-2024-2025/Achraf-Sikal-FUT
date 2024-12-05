@@ -405,3 +405,6 @@ function rest() {
 function addpoprespo() {
     document.getElementById("addform").classList.toggle("hidden")
 }
+function theme() {
+    document.querySelector("html").classList.toggle("dark")
+}
